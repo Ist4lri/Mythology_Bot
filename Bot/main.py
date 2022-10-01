@@ -25,7 +25,7 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all(
 @bot.event
 async def on_ready():
     # remplacer "général" par le nom du salon
-    channel = discord.utils.get(bot.get_all_channels(), name="général")
+    channel = discord.utils.get(bot.get_all_channels(), name="olympe")
     await bot.get_channel(channel.id).send("Bonjour à tous !")
     print(f"{bot.user.name} est prêt.")
 
@@ -78,14 +78,15 @@ async def bonjour(ctx):
 
 @bot.command()
 async def event(ctx):
-    eventChannel = discord.utils.get(bot.get_all_channels(), name="event")
-    divinity = discord.utils.get(ctx.guild.roles, id=1025026978337787944)
-    oua = bot.get_emoji(1025125432380629023)
-    cdg = bot.get_emoji(1025125331813814292)
-    gne = bot.get_emoji(1025125300843065344)
-    fn = bot.get_emoji(1025125399786705067)
-    prof = bot.get_emoji(1025125464014082128)
-    fau = bot.get_emoji(1025125368337797201)
+    eventChannel = discord.utils.get(
+        bot.get_all_channels(), id=995675244666822787)
+    divinity = discord.utils.get(ctx.guild.roles, id=995739644744454195)
+    oua = bot.get_emoji(995754889131065366)
+    cdg = bot.get_emoji(995754346178420756)
+    gne = bot.get_emoji(995754293820923925)
+    fn = bot.get_emoji(995756263545782334)
+    prof = bot.get_emoji(995762015333261466)
+    fau = bot.get_emoji(995754611333935114)
     await ctx.send("Préparation de l'event...")
     await ctx.author.send("Quel serait le jour ? (Mettez le sous la forme DD/MM/YYYY)")
 
@@ -125,7 +126,7 @@ async def event(ctx):
         return Insulte
 
     if reacChoose[0].emoji == "🚪":
-        closeCall = await bot.get_channel(eventChannel.id).send(f"{divinity.mention} ! Rassemblez vous les {insulte()} Sauron à besoin de vous comme chair à cannon !\nCela se passera le {day.content}.\n Ramenez pas votre {insulte()} de camarades, il ne nous servirais à rien. Tout juste a nous embêtter.")
+        closeCall = await bot.get_channel(eventChannel.id).send(f"{divinity.mention} !\n\n\n Rassemblez vous les {insulte()} Sauron à besoin de vous comme chair à cannon !\n\n\n\n\n\nCela se passera le {day.content}.\n\n\n\n\n\nRamenez pas votre {insulte()} de camarades, il ne nous servirais à rien. Tout juste a nous embêtter.")
         await closeCall.add_reaction(gne)
         await closeCall.add_reaction(oua)
         await closeCall.add_reaction(cdg)
@@ -134,7 +135,7 @@ async def event(ctx):
         await closeCall.add_reaction(fau)
         await closeCall.add_reaction("❌")
     elif reacChoose[0].emoji == "🅾️":
-        openCall = await bot.get_channel(eventChannel.id).send(f"{divinity.mention} ! Rassemblez vous les {insulte()} Sauron à besoin de vous comme chair à cannon !\nCela se passera le {day.content}.\n Ramène tes {insulte()} de camarades avec toi, on a besoin de chair à canon, et je pense que t'as pas envie que ça soit toi...")
+        openCall = await bot.get_channel(eventChannel.id).send(f"{divinity.mention} !\n\n\n Rassemblez vous les {insulte()} Sauron à besoin de vous comme chair à cannon !\n\n\n\n\n\nCela se passera le {day.content}.\n\n\n\n\n\nRamène tes {insulte()} de camarades avec toi, on a besoin de chair à canon, et je pense que t'as pas envie que ça soit toi...")
         await openCall.add_reaction(gne)
         await openCall.add_reaction(oua)
         await openCall.add_reaction(cdg)
@@ -175,9 +176,8 @@ async def clear(ctx):
 
 @ bot.command(name="exit")
 async def exit(ctx):
-    reponse = "Bot déconnecté. Bye Bye !"
+    reponse = "Veuillez MP <@974353774032334848> pour pouvoir shutdown le bot."
     await ctx.reply(reponse)
-    await bot.close()
 
 ##########################################################################
 ##########################################################################
